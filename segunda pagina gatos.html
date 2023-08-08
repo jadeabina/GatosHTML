@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultados</title>
+</head>
+<body>
+    <h2>Resultados das Perguntas</h2>
+    
+    <script>
+      
+        function getQueryStringValue(key) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(key);
+        }
+
+   
+        const gatoGosta = getQueryStringValue("gatogosta");
+        const gatoNaoGosta = getQueryStringValue("gatonaogosta");
+        const animal = getQueryStringValue("animal");
+
+        function exibirResposta(pergunta, respostaSelecionada, respostaCorreta) {
+            document.write("<p>" + pergunta + "</p>");
+            document.write("<p>Resposta selecionada: " + respostaSelecionada + "</p>");
+            if (respostaSelecionada === respostaCorreta) {
+                document.write("<p style='color: green;'>Correto</p>");
+            } else {
+                document.write("<p style='color: red;'>Incorreto</p>");
+            }
+        }
+        
+        exibirResposta("Do que os gatos gostam?", gatoGosta, "lasanha");
+        exibirResposta("Do que os gatos não gostam?", gatoNaoGosta, "cachorro");
+        exibirResposta("Em nossa galeria tem foto de qual animal?", animal, "gato");
+
+
+    </script> 
+    
+    <button id="enviar">enviar</button>
+    <img id="gifImg" style="display: none;" src="https://media.tenor.com/5AeBrrSXk34AAAAd/gato.gif" alt="GIF"  >
+    <figcaption>OBRIGADA! NÃO APERTE O BOTÃO</figcaption>
+    <script>
+       
+        document.getElementById("enviar").addEventListener("click", function() {
+            document.getElementById("gifImg").style.display = "block";
+        });
+
+
+
+</script>    
+
+</body>
+
+</html>
